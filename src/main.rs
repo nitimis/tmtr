@@ -10,8 +10,8 @@ use ratatui::{
 use std::io::{stdout, Result};
 
 fn main() -> Result<()> {
-    stdout().execute(EnterAlternateScreen)?;
     enable_raw_mode()?;
+    stdout().execute(EnterAlternateScreen)?;
     let mut terminal = Terminal::new(CrosstermBackend::new(stdout()))?;
     terminal.clear()?;
 
@@ -33,6 +33,7 @@ fn main() -> Result<()> {
             }
         }
     }
+
     stdout().execute(LeaveAlternateScreen)?;
     disable_raw_mode()?;
     Ok(())
